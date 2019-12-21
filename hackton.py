@@ -1,7 +1,11 @@
 import os
 import sys
-print(" 1 -> NMAP\n 2 -> Metasploit\n 3 -> Any other fuck")
+print(" 1 -> CUPP\n 2 -> NMAP\n 3 -> ...")
 choice = int(input("\nEnter The Choice : "))
+# CUPP
+def cupp () :
+    print("Entering CUPP .||.")
+    os.system("cd cupp && python3 cupp.py -i")
 # NMAP
 def nmap () :
     ip = raw_input("Enter The IP Address : ")
@@ -38,5 +42,10 @@ def nmap () :
         os.system("nmap "+ip)
     elif scanType == 10 :
         os.system('nmap -sS -sU -T4 -A -v -PE -PP -PS80,443 -PA3389 -PU40125 -PY -g 53 --script ""default or (discovery and safe)"" '+ip)
+    else :
+        os.system("nmap -T4 -A -v "+ip)
+# Choice Decider
 if choice == 1 :
+    cupp()
+if choice == 2 :
     nmap()
