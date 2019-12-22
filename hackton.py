@@ -1,7 +1,7 @@
 import os
 import sys
 import subprocess
-print(" 1 -> CUPP\n 2 -> NMAP\n 3 -> Weevely\n")
+print(" 1 -> CUPP\n 2 -> NMAP\n 3 -> Commix\n")
 choice = int(input("\nEnter The Choice : "))
 # CUPP
 def cupp () :
@@ -48,33 +48,43 @@ def nmap () :
     else :
         os.system("nmap -T4 -A -v "+ip)
     return "ThankYou"
-# Weevely
-def weevely () :
-    print ("Entering Weevely .||.")
-    print ("""Enter The Process . . .\n
-1 -> Generate New Agent\n
-2 -> Command The Target\n
-3 -> Recover An Existing Session\n
-              """)
-    attackType = int(input("Enter The Choice : "))
+# Commix
+def commix () :
+    print("""1 -> Regular Attack
+2 -> Tor Specialized Attack
+3 -> Fore SSL/HTTPS
+4 -> Enumeration - All
+5 -> Purge Attack
+6 -> Mobile Emulation Attack
+7 -> Wizard Interface
+    """)
+    attackType = int(input("Enter The Attack Choice : "))
     if attackType == 1 :
-        password = raw_input("Enter Password : ")
-        path = raw_input("Enter Path : ")
-        os.system("weevely generate who /root/Desktop/backdoor.php")
-    elif attackType == 2 :
-        url = raw_input("Enter The URL : ")
-        password = raw_input("Enter The Password : ")
-        os.system("weevely "+url+ password)
-    elif attackType == 3 :
-        path = raw_input("Enter The Path : ")
-        os.system("weevely session"+ path)
-    else :
-        os.system("weevely generate who /root/Desktop/sample.php")
+        url = raw_input("Enter The Target URL : ")
+        os.system("commix -u "+url)
+    if attackType == 2 :
+        url = raw_input("Enter The Target URL : ")
+        os.system("commix -u "+url +"tor")
+    if attackType == 3 :
+        url = raw_input("Enter The Target URL : ")
+        os.system("commix -u "+url +"--force-ssl")
+    if attackType == 4 :
+        url = raw_input("Enter The Target URL : ")
+        os.system("commix -u "+url +"--all")
+    if attackType == 5 :
+        url = raw_input("Enter The Target URL : ")
+        os.system("commix -u "+url +"--purge")
+    if attackType == 6 :
+        url = raw_input("Enter The Target URL : ")
+        os.system("commix -u "+url +"--mobile")
+    if attackType == 7 :
+        url = raw_input("Enter The Target URL : ")
+        os.system("commix -u "+url +"--wizard")
     return "ThankYou"
-# Choice Decider
+# Choice Decide
 if choice == 1 :
     cupp()
 elif choice == 2 :
     nmap()
 elif choice == 3 :
-    weevely()
+    commix()
