@@ -7,7 +7,7 @@ choice = int(input("\nEnter The Choice : "))
 def cupp () :
     print("Entering CUPP .||.")
     os.system("cd cupp && python3 cupp.py -i")
-    return "ThankYou"
+    return "https://github.com/Mebus/cupp.git"
 # NMAP
 def nmap () :
     print("Entering NMAP .||.")
@@ -47,7 +47,7 @@ def nmap () :
         os.system('nmap -sS -sU -T4 -A -v -PE -PP -PS80,443 -PA3389 -PU40125 -PY -g 53 --script ""default or (discovery and safe)"" '+ip)
     else :
         os.system("nmap -T4 -A -v "+ip)
-    return "ThankYou"
+    return "https://nmap.org/"
 # Commix
 def commix () :
     print("""1 -> Regular Attack
@@ -80,7 +80,7 @@ def commix () :
     if attackType == 7 :
         url = raw_input("Enter The Target URL : ")
         os.system("commix -u "+url +"--wizard")
-    return "ThankYou"
+    return "https://github.com/commixproject/commix.git"
 # Choice Decide
 if choice == 1 :
     cupp()
