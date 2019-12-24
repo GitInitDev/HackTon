@@ -1,7 +1,7 @@
 import os
 import sys
 import subprocess
-print(" 1 -> CUPP\n 2 -> NMAP\n 3 -> Commix\n")
+print(" 1 -> CUPP\n 2 -> NMAP\n 3 -> Commix\n 4 -> FSociety\n")
 choice = int(input("\nEnter The Choice : "))
 # CUPP
 def cupp () :
@@ -50,6 +50,7 @@ def nmap () :
     return "https://nmap.org/"
 # Commix
 def commix () :
+    print("Entering Commix .||.")
     print("""1 -> Regular Attack
 2 -> Tor Specialized Attack
 3 -> Fore SSL/HTTPS
@@ -81,6 +82,21 @@ def commix () :
         url = raw_input("Enter The Target URL : ")
         os.system("commix -u "+url +"--wizard")
     return "https://github.com/commixproject/commix.git"
+def fsociety () :
+    print("Entering FSociety .||.")
+    print("""1 -> Installation\n
+2 -> UnInstallation\n
+3 -> Execute\n""")
+    action = int(input("Enter Your Choice : "))
+    if action == 1 :
+        os.system("cd fsociety")
+        os.system("chmod u+x install.sh && ./install.sh")
+    if action == 2 :
+        os.system("cd fsociety")
+        os.system("chmod u+x uninstall.sh && ./uninstall.sh")
+    if action == 3 :
+        os.system("fsociety")
+        os.system("Y")
 # Choice Decide
 if choice == 1 :
     cupp()
@@ -88,3 +104,5 @@ elif choice == 2 :
     nmap()
 elif choice == 3 :
     commix()
+elif choice == 4 :
+    fsociety()
