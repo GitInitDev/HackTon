@@ -1,7 +1,8 @@
 import os
 import sys
 import subprocess
-print(" 1 -> CUPP\n 2 -> NMAP\n 3 -> Commix\n 4 -> FSociety\n")
+# Get Info
+print(" 1 -> CUPP\n 2 -> NMAP\n 3 -> Commix\n 4 -> FSociety\n 5 -> Hidden Eye\n 6 -> BruteSploit")
 choice = int(input("\nEnter The Choice : "))
 # CUPP
 def cupp () :
@@ -34,15 +35,15 @@ def nmap () :
     elif scanType == 4 :
         os.system("nmap -T4 -A -v -Pn "+ip)
     elif scanType == 5 :
-        os.system("nmap -sn "+ip)
+        os.system("nmap -sn -v "+ip)
     elif scanType == 6 :
-        os.system("nmap -T4 -F "+ip)
+        os.system("nmap -T4 -F -v "+ip)
     elif scanType == 7 :
-        os.system("nmap -sV -T4 -O -F --version-light "+ip)
+        os.system("nmap -sV -T4 -O -F --version-light -v "+ip)
     elif scanType == 8 :
-        os.system("nmap -sn --traceroute "+ip)
+        os.system("nmap -sn --traceroute -v "+ip)
     elif scanType == 9 :
-        os.system("nmap "+ip)
+        os.system("nmap -v "+ip)
     elif scanType == 10 :
         os.system('nmap -sS -sU -T4 -A -v -PE -PP -PS80,443 -PA3389 -PU40125 -PY -g 53 --script ""default or (discovery and safe)"" '+ip)
     else :
@@ -96,7 +97,24 @@ def fsociety () :
         os.system("chmod u+x uninstall.sh && ./uninstall.sh")
     if action == 3 :
         os.system("fsociety")
-        os.system("Y")
+    return "https://github.com/Manisso/fsociety.git"
+def hidden_eye () :
+    print("Entering Hidden Eye .||.")
+    os.system("cd HiddenEye && python3 HiddenEye.py")
+    os.system("Y")
+    return "https://github.com/DarkSecDevelopers/HiddenEye.git"
+def brutesploit () :
+    print("""1 -> Installation\n
+2 -> Execute\n""")
+    action = int(input("Enter Your Choice : "))
+    if action == 1 :
+        print("Installing BruteSploit <|.|>")
+        os.system("cd BruteSploit && chmod u+x Brutesploit")
+        os.system("./Brutesploit.sh")
+    if action == 2 :
+        print("Entering BruteSploit .||.")
+        os.system("cd BruteSploit")
+        os.system("./Brutesploit.sh")
 # Choice Decide
 if choice == 1 :
     cupp()
@@ -106,3 +124,7 @@ elif choice == 3 :
     commix()
 elif choice == 4 :
     fsociety()
+elif choice == 5 :
+    hidden_eye()
+elif choice == 6 :
+    brutesploit()
